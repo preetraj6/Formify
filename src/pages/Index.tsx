@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Image, Camera, User, Mail } from 'lucide-react';
+import { FileText, User, Mail, Image, Camera, Award } from 'lucide-react';
+import Header from '@/components/Header';
+import PremiumCard from '@/components/PremiumCard';
 import ResumeBuilder from '@/components/ResumeBuilder';
 import CoverLetterBuilder from '@/components/CoverLetterBuilder';
 import ReferenceBuilder from '@/components/ReferenceBuilder';
@@ -29,101 +29,112 @@ const Index = () => {
         return <DocumentScanner onBack={() => setActiveView('home')} />;
       default:
         return (
-          <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-            <div className="max-w-md mx-auto">
-              <div className="text-center mb-8 pt-8">
-                <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <FileText className="w-8 h-8 text-blue-600" />
+          <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50">
+            <Header 
+              title="Formify" 
+              subtitle="Professional Document Creator"
+              showBack={false}
+            />
+            
+            <div className="p-4 space-y-6">
+              {/* Stats Section */}
+              <div className="bg-white rounded-2xl shadow-lg p-6 border-0">
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl font-display font-bold text-gray-900">1.2k+</div>
+                    <div className="text-xs text-gray-600">Documents Created</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-display font-bold text-gray-900">500+</div>
+                    <div className="text-xs text-gray-600">Happy Users</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-display font-bold text-gray-900">4.8★</div>
+                    <div className="text-xs text-gray-600">User Rating</div>
+                  </div>
                 </div>
-                <h1 className="text-3xl font-bold text-gray-800 mb-2">DocuTools</h1>
-                <p className="text-gray-600">Professional Document Utilities</p>
               </div>
 
-              <div className="space-y-4">
-                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setActiveView('resume')}>
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-blue-100 p-2 rounded-lg">
-                        <User className="w-5 h-5 text-blue-600" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg">Resume/CV Maker</CardTitle>
-                        <CardDescription>Create professional resumes with guided prompts</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
-
-                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setActiveView('cover-letter')}>
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-green-100 p-2 rounded-lg">
-                        <Mail className="w-5 h-5 text-green-600" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg">Cover Letter Generator</CardTitle>
-                        <CardDescription>Build compelling cover letters quickly</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
-
-                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setActiveView('references')}>
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-purple-100 p-2 rounded-lg">
-                        <FileText className="w-5 h-5 text-purple-600" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg">Reference Sheet</CardTitle>
-                        <CardDescription>Organize professional references</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
-
-                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setActiveView('bio')}>
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-orange-100 p-2 rounded-lg">
-                        <User className="w-5 h-5 text-orange-600" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg">Professional Bio</CardTitle>
-                        <CardDescription>Craft engaging professional summaries</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
-
-                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setActiveView('image-pdf')}>
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-red-100 p-2 rounded-lg">
-                        <Image className="w-5 h-5 text-red-600" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg">Image to PDF</CardTitle>
-                        <CardDescription>Convert images to PDF documents</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
-
-                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setActiveView('scanner')}>
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-teal-100 p-2 rounded-lg">
-                        <Camera className="w-5 h-5 text-teal-600" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg">Document Scanner</CardTitle>
-                        <CardDescription>Scan documents with your camera</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
+              {/* Quick Actions */}
+              <div className="space-y-3">
+                <h2 className="font-display font-semibold text-gray-900 text-lg px-1">
+                  Create Professional Documents
+                </h2>
+                
+                <div className="space-y-3">
+                  <PremiumCard
+                    title="Resume/CV Maker"
+                    description="Build professional resumes with expert templates"
+                    icon={User}
+                    iconColor="text-blue-600"
+                    iconBg="bg-blue-100"
+                    onClick={() => setActiveView('resume')}
+                    gradient="from-blue-50 to-indigo-50"
+                  />
+                  
+                  <PremiumCard
+                    title="Cover Letter Generator"
+                    description="Create compelling cover letters that get noticed"
+                    icon={Mail}
+                    iconColor="text-green-600"
+                    iconBg="bg-green-100"
+                    onClick={() => setActiveView('cover-letter')}
+                    gradient="from-green-50 to-emerald-50"
+                  />
+                  
+                  <PremiumCard
+                    title="Reference Sheet"
+                    description="Organize your professional references perfectly"
+                    icon={Award}
+                    iconColor="text-purple-600"
+                    iconBg="bg-purple-100"
+                    onClick={() => setActiveView('references')}
+                    gradient="from-purple-50 to-violet-50"
+                  />
+                  
+                  <PremiumCard
+                    title="Professional Bio"
+                    description="Craft engaging summaries for any platform"
+                    icon={FileText}
+                    iconColor="text-orange-600"
+                    iconBg="bg-orange-100"
+                    onClick={() => setActiveView('bio')}
+                    gradient="from-orange-50 to-amber-50"
+                  />
+                </div>
               </div>
+
+              {/* Utility Tools */}
+              <div className="space-y-3">
+                <h2 className="font-display font-semibold text-gray-900 text-lg px-1">
+                  Document Utilities
+                </h2>
+                
+                <div className="space-y-3">
+                  <PremiumCard
+                    title="Image to PDF"
+                    description="Convert images to professional PDF documents"
+                    icon={Image}
+                    iconColor="text-red-600"
+                    iconBg="bg-red-100"
+                    onClick={() => setActiveView('image-pdf')}
+                    gradient="from-red-50 to-rose-50"
+                  />
+                  
+                  <PremiumCard
+                    title="Document Scanner"
+                    description="Scan documents with your camera instantly"
+                    icon={Camera}
+                    iconColor="text-teal-600"
+                    iconBg="bg-teal-100"
+                    onClick={() => setActiveView('scanner')}
+                    gradient="from-teal-50 to-cyan-50"
+                  />
+                </div>
+              </div>
+
+              {/* Bottom Spacing for Mobile */}
+              <div className="h-6"></div>
             </div>
           </div>
         );
